@@ -20,24 +20,30 @@
 
 @isset($fornecedores)
 
-    Forncedor: {{ $fornecedores[0]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[0]['status'] }}
-    <br>
-    CNPJ: {{ $fornecedores[0]['cnpj'] ?? 'nao definido'}}
-    
-    
-    <br>
-    <br>
-    Forncedor: {{ $fornecedores[1]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[1]['status'] }}
-    <br>
-    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'nao definido'}}
+    @foreach ($fornecedores as $indice => $item)
+        Iteracao Atual: {{ $loop->iteration }}
+        <br>
+        Forncedor: {{ $item['nome'] }}
+        <br>
+        Status: {{ $item['status'] }}
+        <br>
+        CNPJ: {{ $item['cnpj'] ?? 'nao definido'}}
+        <br>
+        Telefone: {{ $item['telefone'] }}
+        <br>
+        @if ($loop->first)
+            This is the first iteration                    
+        @endif
+
+        @if ($loop->last)
+            This is the last iteration 
+        @endif
+        <hr>
+    @endforeach
 
 @endisset
 
-<br>
+{{-- <br>
 <br>
 Forncedor: {{ $fornecedores[2]['nome'] }}
 <br>
@@ -59,7 +65,8 @@ Telefone: ({{ $fornecedores[2]['ddd'] }}) {{ $fornecedores[2]['telefone'] }}
         @break
     @default
         Estado nao identificado
-@endswitch
+@endswitch --}}
+
 
 
 {{-- @if (!($fornecedores[0]['status'] == 'S'))
