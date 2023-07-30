@@ -55,5 +55,6 @@ class CreateUnidadesTable extends Migration
         });
 
         Schema::dropIfExists('unidades');
+
     }
 }
